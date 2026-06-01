@@ -28,7 +28,14 @@
 }
 
 .lef img {
-  width: 40px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  display: block;
+}
+
+.site-logo {
+  min-width: 48px;
 }
 
 .lef button {

@@ -1,4 +1,3 @@
-import React from "react";
 import "./footer.css"; // Adjust path as necessary
 import { Link } from "react-router-dom";
 
@@ -8,7 +7,7 @@ const Footer = () => {
       <div className="footer-container">
         <div className="footer-section about">
           <h3>
-            <img src="l.svg" alt="Barber Logo" />
+            <img src="/l.svg" alt="Logo" />
           </h3>
           <p>Accelerator niche market technology business plan infographic.</p>
           <div className="socials">
@@ -26,17 +25,15 @@ const Footer = () => {
         <div className="footer-section links">
           <h4>Quick Links</h4>
           <ul>
-            <Link to={"/about"}>
-              <li>
-                <a href="#">About Us</a>
-              </li>
-            </Link>
             <li>
-              <a href="#">Services</a>
+              <Link to="/about">About Us</Link>
             </li>
-            <Link to={"contact"}>
-              <li>Contact Us</li>
-            </Link>
+            <li>
+              <Link to="/feature">Services</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact Us</Link>
+            </li>
           </ul>
         </div>
         <div className="footer-section contact">

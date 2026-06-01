@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./gam.css";
-import Navbar from "./Navbar";
 
 // Define quiz data directly in the component or import from a JSON file
 const quizData = [
@@ -178,6 +177,11 @@ const Quiz = () => {
     setIsSubmitted(true);
   };
 
+  const restartQuiz = () => {
+    setAnswers({});
+    setIsSubmitted(false);
+  };
+
   const calculateScore = () => {
     return quizData.reduce((score, question, index) => {
       if (answers[index] === question.correct) {
@@ -192,20 +196,23 @@ const Quiz = () => {
       <div className="bodyh">
         <div className="quiz-container" id="quiz">
           {isSubmitted ? (
-            <div>
+            <div className="quiz-result">
               <h3>
                 Your score: {calculateScore()} / {quizData.length}
               </h3>
               <p>You have submitted the quiz.</p>
+              <button className="buttonk" onClick={restartQuiz} type="button">
+                Try Again
+              </button>
             </div>
           ) : (
             <div>
               {quizData.map((quizItem, index) => (
-                <div key={index}>
+                <div key={index} className="quiz-question">
                   <h3>{quizItem.question}</h3>
-                  <hul>
+                  <ul className="quiz-options">
                     {Object.entries(quizItem.options).map(([key, value]) => (
-                      <hli key={key}>
+                      <li key={key}>
                         <input
                           type="radio"
                           id={`${key}${index}`}
@@ -215,15 +222,16 @@ const Quiz = () => {
                           onChange={() => handleOptionChange(index, key)}
                         />
                         <label htmlFor={`${key}${index}`}>{value}</label>
-                      </hli>
+                      </li>
                     ))}
-                  </hul>
+                  </ul>
                 </div>
               ))}
               <button
                 className="buttonk"
                 id="submit"
                 onClick={handleSubmit}
+                type="button"
                 disabled={Object.keys(answers).length !== quizData.length}
               >
                 Submit

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./navbar.css";
 import { UserButton, useUser } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const { user, isSignedIn } = useUser();
+  const { isSignedIn } = useUser();
   const [menu, setMenu] = useState(false);
   const [language, setLanguage] = useState("english");
 

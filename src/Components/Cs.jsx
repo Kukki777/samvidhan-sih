@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import "./cs.css";
 
 function Cs() {
   const crosswordData = [
@@ -81,8 +82,9 @@ function Cs() {
   };
 
   const checkAnswers = () => {
-    const allCorrect = gridState.every(
-      (cell) => cell.userAnswer === cell.letter
+    const allCorrect = gridState
+      .filter((cell) => cell.letter)
+      .every((cell) => cell.userAnswer === cell.letter
     );
 
     if (allCorrect) {
@@ -102,39 +104,18 @@ function Cs() {
   };
 
   return (
-    <div style={{ padding: "20px", textAlign: "center" }}>
+    <div className="bodyp">
+      <div className="crossword-panel">
       <h1>Crossword Puzzle</h1>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(7, 50px)",
-          gridTemplateRows: "repeat(9, 50px)",
-          gap: "5px",
-          justifyContent: "center",
-        }}
-      >
+      <div className="crossword-grid">
         {gridState.map((cell, index) => (
           <div
             key={index}
-            style={{
-              border: "1px solid #000",
-              position: "relative",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: cell.letter ? "#fff" : "#ccc",
-            }}
+            className={`crossword-cell ${cell.letter ? "" : "black-cell"}`}
+            style={{ gridRow: cell.row, gridColumn: cell.col }}
           >
             {cell.isClueStart && (
-              <span
-                style={{
-                  position: "absolute",
-                  top: "2px",
-                  left: "2px",
-                  fontSize: "10px",
-                  color: "#999",
-                }}
-              >
+              <span className="clue-number">
                 {cell.number}
               </span>
             )}
@@ -144,27 +125,23 @@ function Cs() {
                 maxLength="1"
                 value={cell.userAnswer}
                 onChange={(e) => handleInputChange(index, e.target.value)}
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  textAlign: "center",
-                  fontSize: "18px",
-                  border: "none",
-                }}
               />
             ) : null}
           </div>
         ))}
       </div>
-      <button onClick={checkAnswers} style={{ marginTop: "20px" }}>
+      <div className="crossword-actions">
+      <button onClick={checkAnswers} type="button">
         Check Answers
       </button>
       <button
         onClick={resetPuzzle}
-        style={{ marginTop: "10px", marginLeft: "10px" }}
+        type="button"
       >
         Reset Puzzle
       </button>
+      </div>
+      </div>
     </div>
   );
 }
