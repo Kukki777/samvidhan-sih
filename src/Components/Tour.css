@@ -22,7 +22,7 @@
 .slider-container{
   width: 85%;
   height: 100vh;
-  background-image: url('Images/bg-img.png');
+  background-image: url('/img.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;

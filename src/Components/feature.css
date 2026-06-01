@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: flex-start;
   height: 100vh;
-  background: url('image.jpg') no-repeat center center;
+  background: url('/image.jpg') no-repeat center center;
   background-size: cover;
   color: #333;
 }
