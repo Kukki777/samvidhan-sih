@@ -1,0 +1,147 @@
+.memory-page {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eef5f9;
+  padding: 32px 16px;
+  box-sizing: border-box;
+}
+
+.memory-panel {
+  width: min(960px, 100%);
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 12px 36px rgba(35, 55, 80, 0.14);
+  padding: 24px;
+}
+
+.memory-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.memory-header h1 {
+  margin: 0;
+  color: #243b53;
+  font-size: 1.8rem;
+}
+
+.memory-stats {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  color: #334e68;
+  font-weight: 700;
+}
+
+.memory-stats span {
+  background: #e3eef6;
+  border-radius: 999px;
+  padding: 8px 12px;
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.memory-card {
+  border: 0;
+  background: transparent;
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.memory-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform-style: preserve-3d;
+  transition: transform 0.45s ease;
+}
+
+.memory-card.is-flipped .memory-card-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-card-front,
+.memory-card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.memory-card-front {
+  background: #1769aa;
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.memory-card-back {
+  background: #ffffff;
+  border: 2px solid #1769aa;
+  color: #102a43;
+  transform: rotateY(180deg);
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.memory-card-back small {
+  color: #627d98;
+  font-size: 0.75rem;
+}
+
+.memory-card.is-matched .memory-card-back {
+  border-color: #0f8b5f;
+  background: #e8f7ef;
+}
+
+.memory-result {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: #102a43;
+  font-weight: 700;
+}
+
+.memory-result button {
+  border: 0;
+  border-radius: 999px;
+  background: #1769aa;
+  color: #ffffff;
+  padding: 10px 18px;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .memory-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .memory-grid {
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+  }
+}
